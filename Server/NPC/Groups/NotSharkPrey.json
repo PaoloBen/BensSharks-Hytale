@@ -1,0 +1,20 @@
+{
+  "IncludeRoles": [
+    "Shellfish_Lava",
+    "Trilobite*",
+    "Whale_Humpback",
+    "Bluegill",
+    "Frostgill",
+    "Minnow",
+    "Pike",
+    "Piranha_Black",
+    "Piranha",
+    "Salmon",
+    "Trout_Rainbow",
+    "Clownfish",
+    "Jellyfish*",
+    "Pufferfish",
+    "Tang*",
+    "Sharks"
+  ]
+}

@@ -1,0 +1,6 @@
+npcRoles.Shark_GreatWhite.name = Great White Shark
+items.Weapon_Club_Shark_Tooth.name = Shark Tooth Club
+entityEffects.Poison = Poison
+general.damageCauses.bleed = bleeding
+items.Ingredient_Shark_Tooth.name = Shark Tooth
+items.Ingredient_Shark_Tooth.description = Sharp enough to cut through bone and flesh, this material can be fashioned into lethal gear.

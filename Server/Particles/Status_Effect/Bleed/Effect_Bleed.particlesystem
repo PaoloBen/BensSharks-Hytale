@@ -1,0 +1,19 @@
+{
+  "Spawners": [
+    {
+      "SpawnerId": "Status_Bleed_Implosion",
+      "Scale": 1,
+      "PositionOffset": {
+        "Y": 0.1
+      }
+    },
+    {
+      "SpawnerId": "Status_Bleed_Sparks",
+      "PositionOffset": {
+        "Y": 0.25
+      }
+    }
+  ],
+  "CullDistance": 100.0,
+  "IsImportant": true
+}

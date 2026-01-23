@@ -1,0 +1,20 @@
+{
+  "Group": "benndevs",
+  "Name": "Ben's Sharks",
+  "Version": "1.0.2",
+  "Description": "A mod that adds sharks to the world of Hytale!",
+  "Authors": [
+    {
+      "Name": "benndevs",
+      "Email": "",
+      "Url": ""
+    }
+  ],
+  "Website": "",
+  "Dependencies": {},
+  "OptionalDependencies": {},
+  "LoadBefore": {},
+  "DisabledByDefault": false,
+  "IncludesAssetPack": false,
+  "SubPlugins": []
+}

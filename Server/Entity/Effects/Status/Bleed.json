@@ -1,0 +1,31 @@
+{
+  "ApplicationEffects": {
+    "EntityBottomTint": "#380519",
+    "EntityTopTint": "#380519",
+    "ScreenEffect": "ScreenEffects/Bleed.png",
+    "WorldSoundEventId": "SFX_Effect_Poison_World",
+    "LocalSoundEventId": "SFX_Effect_Poison_Local",
+    "Particles": [
+      {
+        "SystemId": "Effect_Bleed"
+      }
+    ],
+    "ModelVFXId": "Bleed"
+  },
+  "DamageCalculatorCooldown": 1,
+  "DamageCalculator": {
+    "BaseDamage": {
+      "Bleeding": 1
+    }
+  },
+  "DamageEffects": {
+    "WorldSoundEventId": "SFX_Effect_Poison_World",
+    "PlayerSoundEventId": "SFX_Effect_Poison_Local"
+  },
+  "OverlapBehavior": "Extend",
+  "RemovalBehavior": "Duration",
+  "Infinite": false,
+  "Debuff": true,
+  "StatusEffectIcon": "UI/StatusEffects/Bleed.png",
+  "Duration": 5
+}

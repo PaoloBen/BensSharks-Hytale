@@ -1,0 +1,18 @@
+{
+  "SwitchTo": "PostColor",
+  "EffectDirection": "BottomUp",
+  "AnimationDuration": 0.25,
+  "AnimationRange": {
+    "Y": 1.0
+  },
+  "HighlightColor": "#3A020D",
+  "HighlightThickness": 10,
+  "UseBloomOnHighlight": true,
+  "NoiseScale": {
+    "X": 10.0,
+    "Y": 10.0
+  },
+  "PostColor": "#3A020D",
+  "PostColorOpacity": 0.1,
+  "UseProgessiveHighlight": false
+}

@@ -1,0 +1,5 @@
+{
+  "DamageTextColor": "8E0D20",
+  "Parent": "Physical",
+  "Inherits": "Physical"
+}

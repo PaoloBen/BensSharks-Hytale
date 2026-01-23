@@ -1,0 +1,10 @@
+{
+  "IncludeRoles": [
+    "Eel_Moray",
+    "Snapjaw",
+    "Neutral",
+    "Livestock",
+    "Prey",
+    "PreyBig"
+  ]
+}
