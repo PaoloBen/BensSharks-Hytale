@@ -1,0 +1,37 @@
+{
+  "TranslationProperties": {
+    "Name": "server.items.Ingredient_Megalodon_Tooth.name",
+    "Description": "server.items.Ingredient_Megalodon_Tooth.description"
+  },
+  "Categories": [
+    "Items.Ingredients"
+  ],
+  "Model": "Resources/Ingredients/Megalodon_Tooth.blockymodel",
+  "Texture": "Resources/Ingredients/Megalodon_Tooth.png",
+  "PlayerAnimationsId": "Item",
+  "FuelQuality": 0,
+  "IconProperties": {
+    "Scale": 1,
+    "Rotation": [
+      0,
+      180,
+      0
+    ],
+    "Translation": [
+      0,
+      -9
+    ]
+  },
+  "Tags": {
+    "Type": [
+      "Ingredient"
+    ]
+  },
+  "ItemEntity": {
+    "ParticleSystemId": null
+  },
+  "ItemSoundSetId": "ISS_Items_Bones",
+  "DropOnDeath": true,
+  "Icon": "Icons/ItemsGenerated/Ingredient_Megalodon_Tooth.png",
+  "Quality": "Epic"
+}

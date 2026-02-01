@@ -21,7 +21,7 @@
         "Quantity": 7
       },
       {
-        "ItemId": "Ingredient_Leather_Light",
+        "ItemId": "Ingredient_Fabric_Scrap_Linen",
         "Quantity": 4
       },
       {
@@ -53,7 +53,8 @@
     "Compatible": true
   },
   "Interactions": {
-    "Primary": "Club_Attack"
+    "Primary": "Club_Attack",
+    "Secondary": "Sword_Block"
   },
   "InteractionVars": {
     "Club_Swing_Left_Effect": {
@@ -157,7 +158,7 @@
     ]
   },
   "DroppedItemAnimation": "Items/Animations/Dropped/Dropped_Diagonal_Left.blockyanim",
-  "MaxDurability": 200,
+  "MaxDurability": 80,
   "DurabilityLossOnHit": 0.7,
   "Tags": {
     "Type": [

@@ -13,7 +13,7 @@
       "Description": "Drop Items"
     },
     "FlockArray": {
-      "Value": [ "Template_Shark_Neutral" ],
+      "Value": [ "Template_Shark_GreatWhite" ],
       "Description": "Array containing NPCs for this flock type"
     },
     "HearingRange": {
@@ -33,7 +33,7 @@
       "Description": "The attack sequence to use in combat"
     },
     "ExcludeGroups": {
-      "Value": [ "NotSharkPrey", "Sharks", "Birds", "Capture_Crate", "Critters", "Predators", "PredatorsBig", "Self", "Vermin", "Void", "Aggressive" ],
+      "Value": [ "Aquatic", "Sharks", "Birds", "Capture_Crate", "Critters", "Predators", "PredatorsBig", "Self", "Vermin", "Void", "Aggressive" ],
       "TypeHint": "String",
       "Description": "Groups to exclude"
     },
@@ -108,11 +108,6 @@
             "Type": "Absolute",
             "BaseDamage": { "Physical": 40 },
             "RandomPercentageModifier": 0.1
-          },
-          "Next": {
-            "Type": "ApplyEffect",
-            "Entity": "Target",
-            "EffectId": "Bleed"
           }
         }
       ]

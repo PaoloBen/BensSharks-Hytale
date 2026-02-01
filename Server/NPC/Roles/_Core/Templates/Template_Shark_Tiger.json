@@ -1,0 +1,509 @@
+{
+  "Type": "Abstract",
+  "KnockbackScale": 0.5,
+  "StartState": "Idle",
+  "AttitudeGroup": "PredatorsBig",
+  "Parameters": {
+    "Appearance": {
+      "Value": "Shark_Tiger",
+      "Description": "Model to be used"
+    },
+    "DropList": {
+      "Value": "Empty",
+      "Description": "Drop Items"
+    },
+    "FlockArray": {
+      "Value": [ "Template_Shark_Tiger" ],
+      "Description": "Array containing NPCs for this flock type"
+    },
+    "HearingRange": {
+      "Value": 16,
+      "Description": "Detection Range: Very small (Touch distance)."
+    },
+    "AlertedRange": {
+      "Value": 20,
+      "Description": "Chase Range: How far it chases once angry."
+    },
+    "MaxHealth": {
+      "Value": 100,
+      "Description": "Max health for the NPC"
+    },
+    "Attack": {
+      "Value": "Shark_Tiger_Bite",
+      "Description": "The attack sequence to use in combat"
+    },
+    "ExcludeGroups": {
+      "Value": [ "NotSharkPrey", "Sharks", "Birds", "Capture_Crate", "Critters", "Predators", "PredatorsBig", "Self", "Vermin", "Void", "Aggressive" ],
+      "TypeHint": "String",
+      "Description": "Groups to exclude"
+    },
+    "IsMemory": {
+      "Value": false,
+      "Description": "Defines if the NPC is a memory"
+    },
+    "MemoriesCategory": {
+      "Value": "Other",
+      "Description": "Defines the category of the memory"
+    },
+    "MemoriesNameOverride": {
+      "Value": "",
+      "Description": "Overrides the memory name if set"
+    },
+    "NameTranslationKey": {
+      "Value": "server.npcRoles.Template.name",
+      "Description": "Translation key for NPC name display"
+    }
+  },
+  "IsMemory": { "Compute": "IsMemory" },
+  "MemoriesCategory": { "Compute": "MemoriesCategory" },
+  "MemoriesNameOverride": { "Compute": "MemoriesNameOverride" },
+  "DropList": { "Compute": "DropList" },
+  "FlockSpawnTypes": { "Compute": "FlockArray" },
+  "DisableDamageGroups": [ "Self" ],
+  "Appearance": { "Compute": "Appearance" },
+  "BreathesInWater": true,
+  "MotionControllerList": [
+    {
+      "Type": "Dive",
+      "MaxSwimSpeed": 10,
+      "Acceleration": 5,
+      "MaxDiveSpeed": 8,
+      "SwimDepth": 0.6,
+      "SinkRatio": 0.5,
+      "MinDiveDepth": 0,
+      "MaxDiveDepth": 100,
+      "MinDepthAboveGround": 1,
+      "MinDepthBelowSurface": 1,
+      "Gravity": 10,
+      "MaxRotationSpeed": 95,
+      "MaxSwimTurnAngle": 180
+    }
+  ],
+  "StateTransitions": [
+    {
+      "$Comment": "Always clear target and reset instructions when going back to idle.",
+      "States": [
+        {
+          "To": [ "Idle" ],
+          "From": [ ]
+        }
+      ],
+      "Actions": [
+        {
+          "Type": "ReleaseTarget"
+        },
+        {
+          "Type": "ResetInstructions"
+        }
+      ]
+    }
+  ],
+  "MaxHealth": { "Compute": "MaxHealth" },
+  "InteractionVars": {
+    "Melee_Damage": {
+      "Interactions": [
+        {
+          "Parent": "NPC_Attack_Melee_Damage",
+          "DamageCalculator": {
+            "Type": "Absolute",
+            "BaseDamage": { "Physical": 30 },
+            "RandomPercentageModifier": 0.1
+          },
+          "Next": {
+            "Type": "ApplyEffect",
+            "Entity": "Target",
+            "EffectId": "Bleed"
+          }
+        }
+      ]
+    }
+  },
+  "Instructions": [
+    {
+      "$Comment": "GLOBAL: Flopping Behavior. If NOT in water, Panic (flop/thrash).",
+      "Continue": true,
+      "Instructions": [
+        {
+          "Sensor": {
+            "Type": "And",
+            "Sensors": [
+              {
+                "Type": "Not",
+                "Sensor": { "Type": "InWater" }
+              },
+              {
+                "Type": "Not",
+                "Sensor": { "Type": "State", "State": "Panic" }
+              }
+            ]
+          },
+          "Actions": [
+            { "Type": "State", "State": "Panic" }
+          ]
+        }
+      ]
+    },
+    {
+      "Instructions": [
+        {
+          "Sensor": {
+            "Type": "State",
+            "State": "Idle"
+          },
+          "Instructions": [
+            {
+              "Reference": "Component_Instruction_Clear_Status_Animation",
+              "Modify": { }
+            },
+            {
+              "$Comment": "Motions: Wander/Swim peacefully.",
+              "Continue": true,
+              "Sensor": { "Type": "Any" },
+              "Instructions": [
+                {
+                  "Sensor": { "Type": "Eval", "Expression": "blocked" },
+                  "BodyMotion": {
+                    "Type": "Timer",
+                    "Time": [ 2, 3 ],
+                    "Motion": {
+                      "Type": "Wander",
+                      "MaxHeadingChange": 1,
+                      "RelativeSpeed": 0.25
+                    }
+                  }
+                },
+                {
+                  "Reference": "Component_Instruction_Spread_Out",
+                  "Modify": { "Range": 0, "RelativeSpeed": 1 }
+                },
+                {
+                  "Sensor": { "Type": "Any" },
+                  "BodyMotion": {
+                    "Type": "WanderInCircle",
+                    "MaxHeadingChange": 0.1,
+                    "Radius": 120,
+                    "RelativeSpeed": 0.325
+                  }
+                }
+              ]
+            },
+            {
+              "$Comment": "PROXIMITY AGGRO: If Mob is very close (3.5 blocks), become Alerted.",
+              "Sensor": {
+                "Type": "Mob",
+                "Range": { "Compute": "HearingRange" },
+                "LockOnTarget": true,
+                "GetPlayers": false,
+                "GetNPCs": true,
+                "ExcludeOwnType": true,
+                "Filters": [ 
+                            { "Type": 
+                              "LineOfSight" 
+                            },
+                            {
+                              "Enabled": { "Compute": "!isEmptyStringArray(ExcludeGroups)" },
+                              "Type": "NPCGroup",
+                              "ExcludeGroups": { "Compute": "ExcludeGroups" }
+                            }
+                           ]
+              },
+              "Actions": [ { "Type": "State", "State": "Alerted" } ]
+            },
+            {
+              "$Comment": "DAMAGE AGGRO: If attacked, attack back immediately.",
+              "Sensor": {
+                "Type": "Damage",
+                "Combat": true,
+                "Environment": true,
+                "Other": true
+              },
+              "Instructions": [
+                {
+                  "$Comment": "If there's someone who could have caused the damage, target them.",
+                  "Sensor": {
+                    "Type": "And",
+                    "Sensors": [
+                      { 
+                        "Type": "Mob", 
+                        "Range": { "Compute": "AlertedRange" },
+                        "LockOnTarget": true,
+                        "GetPlayers": true,
+                        "GetNPCs": true,
+                        "ExcludeOwnType": true,
+                        "Filters": [ 
+                            { "Type": 
+                              "LineOfSight" 
+                            },
+                            {
+                              "Enabled": { "Compute": "!isEmptyStringArray(ExcludeGroups)" },
+                              "Type": "NPCGroup",
+                              "ExcludeGroups": { "Compute": "ExcludeGroups" }
+                            }
+                           ]
+                      },
+                      { "Type": "Damage", "Combat": true }
+                    ]
+                  },
+                  "Actions": [ { "Type": "State", "State": "Attack" } ]
+                },
+                {
+                  "Sensor": { "Type": "Any" },
+                  "Actions": [ { "Type": "State", "State": "Panic" } ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "Sensor": {
+            "Type": "State",
+            "State": "Alerted"
+          },
+          "Instructions": [
+            {
+              "$Comment": "Play Alerted Animation (Exclamation Point).",
+              "Continue": true,
+              "Sensor": { "Type": "Any", "Once": true },
+              "Actions": [
+                { "Type": "PlayAnimation", "Slot": "Status", "Animation": "Alerted" },
+                { "Type": "SpawnParticles", "Offset": [ 0, 1, 0 ], "ParticleSystem": "Alerted" }
+              ]
+            },
+            {
+              "$Comment": "Watch the Mob momentarily.",
+              "Continue": true,
+              "Sensor": { "Type": "Any" },
+              "Instructions": [
+                {
+                  "Sensor": { 
+                              "Type": "Target", 
+                              "Range": { "Compute": "AlertedRange" }, 
+                              "LockOnTarget": true,
+                              "GetPlayers": true,
+                              "GetNPCs": true,
+                              "ExcludeOwnType": true,
+                              "Filters": [ 
+                                { "Type": 
+                                  "LineOfSight" 
+                                },
+                                {
+                                  "Enabled": { "Compute": "!isEmptyStringArray(ExcludeGroups)" },
+                                  "Type": "NPCGroup",
+                                  "ExcludeGroups": { "Compute": "ExcludeGroups" }
+                                }
+                              ]
+                            },
+                  "HeadMotion": { "Type": "Aim" }
+                }
+              ]
+            },
+            {
+              "$Comment": "Transition to Attack (Aggressive behavior restored).",
+              "Sensor": { "Type": "Any" },
+              "Actions": [
+                {
+                  "Type": "Timeout",
+                  "Delay": [ 0.5, 1.0 ],
+                  "Action": { "Type": "State", "State": "Attack" }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "Sensor": {
+            "Type": "State",
+            "State": "Attack"
+          },
+          "Instructions": [
+            {
+              "Continue": true,
+              "Sensor": { "Type": "Any" },
+              "Instructions": [
+                {
+                  "Sensor": { 
+                              "Type": "Target", 
+                              "Range": 0.001,
+                              "LockOnTarget": true,
+                              "GetPlayers": true,
+                              "GetNPCs": true,
+                              "ExcludeOwnType": true,
+                              "Filters": [ 
+                                { "Type": 
+                                  "LineOfSight" 
+                                },
+                                {
+                                  "Enabled": { "Compute": "!isEmptyStringArray(ExcludeGroups)" },
+                                  "Type": "NPCGroup",
+                                  "ExcludeGroups": { "Compute": "ExcludeGroups" }
+                                }
+                              ]
+                            },
+                  "HeadMotion": { "Type": "Aim" }
+                },
+                {
+                  "Sensor": { 
+                              "Type": "Target", 
+                              "Range": { "Compute": "AlertedRange" },
+                              "LockOnTarget": true,
+                              "GetPlayers": true,
+                              "GetNPCs": true,
+                              "ExcludeOwnType": true,
+                                  "Filters": [ 
+                                { "Type": 
+                                  "LineOfSight" 
+                                },
+                                {
+                                  "Enabled": { "Compute": "!isEmptyStringArray(ExcludeGroups)" },
+                                  "Type": "NPCGroup",
+                                  "ExcludeGroups": { "Compute": "ExcludeGroups" }
+                                }
+                              ]
+                            },
+                  "BodyMotion": {
+                    "Type": "Seek",
+                    "MaxHeadingChange": 45,
+                    "SlowDownDistance": 32,
+                    "StopDistance": 0.001
+                  }
+                }
+              ]
+            },
+            {
+              "Sensor": {
+                "Type": "Mob",
+                "Range": 2.5,
+                "LockOnTarget": true,
+                "GetPlayers": true,
+                "GetNPCs": true,
+                "ExcludeOwnType": true,
+                "Filters": [ 
+                            { "Type": 
+                              "LineOfSight" 
+                            },
+                            {
+                              "Enabled": { "Compute": "!isEmptyStringArray(ExcludeGroups)" },
+                              "Type": "NPCGroup",
+                              "ExcludeGroups": { "Compute": "ExcludeGroups" }
+                            }
+                           ]
+              },
+              "Actions": [
+                {
+                  "Type": "Attack",
+                  "Attack": { "Compute": "Attack" },
+                  "AttackPauseRange": [ 1, 1.5 ]
+                }
+              ]
+            },
+            {
+              "Sensor": {
+                "Type": "Not",
+                "Sensor": { 
+                            "Type": "Target", 
+                            "Range": { "Compute": "AlertedRange" },
+                            "LockOnTarget": true,
+                            "GetPlayers": true,
+                            "GetNPCs": true,
+                            "ExcludeOwnType": true,
+                            "Filters": [ 
+                            { "Type": 
+                              "LineOfSight" 
+                            },
+                            {
+                              "Enabled": { "Compute": "!isEmptyStringArray(ExcludeGroups)" },
+                              "Type": "NPCGroup",
+                              "ExcludeGroups": { "Compute": "ExcludeGroups" }
+                            }
+                           ]
+                          }
+              },
+              "Actions": [
+                {
+                  "Type": "Timeout",
+                  "Delay": [ 2, 3 ],
+                  "Action": { "Type": "State", "State": "Idle" }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "Sensor": {
+            "Type": "State",
+            "State": "Panic"
+          },
+          "Instructions": [
+            {
+              "Reference": "Component_Instruction_Clear_Status_Animation",
+              "Modify": { }
+            },
+            {
+              "$Comment": "Motions: Wander wildly (Flopping behavior if on land).",
+              "Continue": true,
+              "Sensor": { "Type": "Any" },
+              "Instructions": [
+                {
+                  "Sensor": { "Type": "Eval", "Expression": "blocked" },
+                  "BodyMotion": {
+                    "Type": "Timer",
+                    "Time": [ 1, 3 ],
+                    "Motion": {
+                      "Type": "Wander",
+                      "MaxHeadingChange": 15,
+                      "RelativeSpeed": 0.8335
+                    }
+                  }
+                },
+                {
+                  "Reference": "Component_Instruction_Spread_Out",
+                  "Modify": { "Range": 1, "RelativeSpeed": 0.8335 }
+                },
+                {
+                  "Sensor": { "Type": "Any" },
+                  "BodyMotion": {
+                    "Type": "Sequence",
+                    "Looped": true,
+                    "Motions": [
+                      {
+                        "Type": "Timer",
+                        "Time": [ 1, 2 ],
+                        "Motion": {
+                          "Type": "WanderInCircle",
+                          "Radius": 10,
+                          "MaxHeadingChange": 45,
+                          "RelativeSpeed": 0.8335
+                        }
+                      },
+                      {
+                        "Type": "Timer",
+                        "Time": [ 0.5, 1 ],
+                        "Motion": {
+                          "Type": "WanderInCircle",
+                          "Radius": 10,
+                          "MaxHeadingChange": 90,
+                          "RelativeSpeed": 0.8335
+                        }
+                      }
+                    ]
+                  }
+                }
+              ]
+            },
+            {
+              "Sensor": { "Type": "Any" },
+              "Actions": [
+                {
+                  "Type": "Timeout",
+                  "Delay": [ 3, 6 ],
+                  "Action": { "Type": "State", "State": "Idle" }
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "NameTranslationKey": { "Compute": "NameTranslationKey" }
+}

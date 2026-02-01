@@ -1,6 +1,10 @@
 npcRoles.Shark_GreatWhite.name = Great White Shark
+npcRoles.Shark_Tiger.name = Tiger Shark
 items.Weapon_Club_Shark_Tooth.name = Shark Tooth Club
 entityEffects.Poison = Poison
 general.damageCauses.bleed = bleeding
 items.Ingredient_Shark_Tooth.name = Shark Tooth
-items.Ingredient_Shark_Tooth.description = Sharp enough to cut through bone and flesh, this material can be fashioned into lethal gear.
+items.Ingredient_Megalodon_Tooth.name = Megalodon Tooth
+items.Ingredient_Shark_Tooth.description = <i>Hooked and ruthlessly serrated, this tooth is designed to saw through bone and thick shell alike.\n\nIt’s a favorite among coastal survivalists for crafting blades that never truly go dull.<i>
+items.Ingredient_Megalodon_Tooth.description = <i>Sages once claimed the Great Leviathans had vanished with the first tides of Orbis.\n\nThe fresh gore still clinging to this massive, jagged tooth suggests that the ocean’s oldest terrors have finally returned to reclaim their hunting grounds.<i>
+items.Weapon_Battleaxe_Spetum.name = Shark Tooth Halberd

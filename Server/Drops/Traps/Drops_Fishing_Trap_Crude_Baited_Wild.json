@@ -485,6 +485,14 @@
           {
             "Type": "Single",
             "Item": {
+              "ItemId": "Fish_Shark_Tiger_Item",
+              "QuantityMin": 1,
+              "QuantityMax": 1
+            }
+          },
+          {
+            "Type": "Single",
+            "Item": {
               "ItemId": "Fish_Snapjaw_Item",
               "QuantityMin": 1,
               "QuantityMax": 1

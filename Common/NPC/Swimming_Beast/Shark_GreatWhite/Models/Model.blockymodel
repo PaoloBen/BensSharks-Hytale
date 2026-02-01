@@ -132,11 +132,11 @@
                     "stretch": {"x": 1, "y": 1, "z": 1.1},
                     "settings": {
                       "isPiece": false,
-                      "size": {"x": 23, "y": 27, "z": 51}
+                      "size": {"x": 29, "y": 27, "z": 51}
                     },
                     "textureLayout": {
                       "back": {
-                        "offset": {"x": 162, "y": 124},
+                        "offset": {"x": 381, "y": 0},
                         "mirror": {"x": false, "y": false},
                         "angle": 0
                       },
@@ -151,12 +151,12 @@
                         "angle": 0
                       },
                       "top": {
-                        "offset": {"x": 289, "y": 112},
+                        "offset": {"x": 381, "y": 51},
                         "mirror": {"x": true, "y": true},
                         "angle": 0
                       },
                       "bottom": {
-                        "offset": {"x": 291, "y": 218},
+                        "offset": {"x": 381, "y": 53},
                         "mirror": {"x": true, "y": false},
                         "angle": 0
                       }
@@ -170,44 +170,44 @@
                     {
                       "id": "5",
                       "name": "Tail-Fin-Top",
-                      "position": {"x": 0, "y": -2, "z": -24},
+                      "position": {"x": 0, "y": -2, "z": -30},
                       "orientation": {"x": -0.23345, "y": 0, "z": 0, "w": 0.97237},
                       "shape": {
                         "type": "box",
-                        "offset": {"x": 0, "y": 14, "z": 0},
+                        "offset": {"x": 0, "y": 10.5, "z": 0},
                         "stretch": {"x": 1, "y": 1, "z": 1},
                         "settings": {
                           "isPiece": false,
-                          "size": {"x": 11, "y": 34, "z": 31}
+                          "size": {"x": 11, "y": 41, "z": 31}
                         },
                         "textureLayout": {
                           "back": {
-                            "offset": {"x": 207, "y": 318},
+                            "offset": {"x": 419, "y": 109},
                             "mirror": {"x": false, "y": false},
                             "angle": 0
                           },
                           "right": {
-                            "offset": {"x": 228, "y": 275},
+                            "offset": {"x": 355, "y": 109},
                             "mirror": {"x": false, "y": false},
                             "angle": 0
                           },
                           "front": {
-                            "offset": {"x": 322, "y": 201},
+                            "offset": {"x": 431, "y": 109},
                             "mirror": {"x": false, "y": false},
                             "angle": 0
                           },
                           "left": {
-                            "offset": {"x": 277, "y": 176},
+                            "offset": {"x": 387, "y": 109},
                             "mirror": {"x": false, "y": false},
                             "angle": 0
                           },
                           "top": {
-                            "offset": {"x": 125, "y": 354},
+                            "offset": {"x": 454, "y": 140},
                             "mirror": {"x": true, "y": true},
                             "angle": 0
                           },
                           "bottom": {
-                            "offset": {"x": 136, "y": 326},
+                            "offset": {"x": 466, "y": 109},
                             "mirror": {"x": true, "y": false},
                             "angle": 0
                           }
@@ -221,7 +221,7 @@
                         {
                           "id": "6",
                           "name": "Tail-Fin-Top2",
-                          "position": {"x": 0, "y": 12.0107, "z": 0.50591},
+                          "position": {"x": 0, "y": 15.5107, "z": 0.50591},
                           "orientation": {"x": -0.04362, "y": 0, "z": 0, "w": 0.99905},
                           "shape": {
                             "type": "quad",
@@ -250,7 +250,7 @@
                     {
                       "id": "7",
                       "name": "Tail-Fin-Bot",
-                      "position": {"x": 0, "y": -10.00001, "z": -27.99991},
+                      "position": {"x": 0, "y": -10.00001, "z": -33.99991},
                       "orientation": {"x": 0.17366, "y": 0, "z": 0, "w": 0.98481},
                       "shape": {
                         "type": "box",
@@ -442,8 +442,8 @@
             {
               "id": "13",
               "name": "Fin-Top",
-              "position": {"x": 0, "y": 34.5, "z": 9.5},
-              "orientation": {"x": -0.21644, "y": 0, "z": 0, "w": 0.9763},
+              "position": {"x": 0, "y": 23.5, "z": -6.5},
+              "orientation": {"x": -0.13053, "y": 0, "z": 0, "w": 0.99144},
               "shape": {
                 "type": "box",
                 "offset": {"x": 0, "y": 13, "z": -11},

@@ -1,0 +1,374 @@
+{
+  "TranslationProperties": {
+    "Name": "server.items.Weapon_Battleaxe_Spetum.name"
+  },
+  "Categories": [
+    "Items.Weapons"
+  ],
+  "Quality": "Epic",
+  "ItemLevel": 30,
+  "Texture": "Items/Weapons/Battleaxe/Spetum_Texture.png",
+  "Icon": "Icons/ItemsGenerated/Weapon_Battleaxe_Spetum.png",
+  "DroppedItemAnimation": "Items/Animations/Dropped/Dropped_Diagonal_Left.blockyanim",
+  "Tags": {
+    "Type": [
+      "Weapon"
+    ],
+    "Family": [
+      "Spear"
+    ]
+  },
+  "MaxDurability": 120,
+  "DurabilityLossOnHit": 0.56,
+  "Weapon": {},
+  "Model": "Items/Weapons/Battleaxe/Spetum.blockymodel",
+  "ItemSoundSetId": "ISS_Weapons_Wood",
+  "PlayerAnimationsId": "Spear",
+  "MaxStack": 1,
+  "IconProperties": {
+    "Scale": 0.22,
+    "Rotation": [
+      45,
+      90,
+      0
+    ],
+    "Translation": [
+      -66,
+      -65
+    ]
+  },
+  "Interactions": {
+    "Primary": "Battleaxe_Scythe_Void_Attack",
+    "Secondary": "Spear_Stab"
+  },
+  "InteractionVars": {
+    "Spear_Block_Damage": "Spear_Block_Damage",
+    "Spear_Spin_Swing_Left_Effect": {
+      "Interactions": [
+        {
+          "Parent": "Spear_Spin_Swing_Left_Effect",
+          "Effects": {
+            "WorldSoundEventId": "SFX_Axe_Special_Swing",
+            "Trails": [
+              {
+                "TrailId": "Daggers_Dash",
+                "PositionOffset": {
+                  "X": 1.3,
+                  "Y": 0,
+                  "Z": 0
+                },
+                "TargetNodeName": "Handle",
+                "RotationOffset": {
+                  "Yaw": 0,
+                  "Pitch": 0,
+                  "Roll": 75
+                }
+              }
+            ]
+          }
+        }
+      ]
+    },
+    "Spear_Spin_Swing_Left_Damage": {
+      "Interactions": [
+        {
+          "Parent": "Spear_Spin_Swing_Left_Damage",
+          "DamageCalculator": {
+            "BaseDamage": {
+              "Physical": 23
+            },
+            "RandomPercentageModifier": 0.1,
+            "Type": "Absolute"
+          },
+          "DamageEffects": {
+            "WorldSoundEventId": "SFX_Club_Steel_Impact",
+            "LocalSoundEventId": "SFX_Club_Steel_Impact"
+          },
+          "Next": {
+            "Type": "ApplyEffect",
+            "Entity": "Target",
+            "EffectId": "Bleed"
+          }
+        }
+      ]
+    },
+    "Spear_Spin_Swing_Right_Effect": {
+      "Interactions": [
+        {
+          "Parent": "Spear_Spin_Swing_Right_Effect",
+          "Effects": {
+            "WorldSoundEventId": "SFX_Axe_Special_Swing",
+            "Trails": [
+              {
+                "TrailId": "Daggers_Dash",
+                "PositionOffset": {
+                  "X": 1.3,
+                  "Y": 0,
+                  "Z": 0
+                },
+                "TargetNodeName": "Handle",
+                "RotationOffset": {
+                  "Yaw": 0,
+                  "Pitch": 0,
+                  "Roll": 75
+                }
+              }
+            ]
+          }
+        }
+      ]
+    },
+    "Spear_Spin_Swing_Right_Damage": {
+      "Interactions": [
+        {
+          "Parent": "Spear_Spin_Swing_Right_Damage",
+          "DamageCalculator": {
+            "BaseDamage": {
+              "Physical": 23
+            },
+            "RandomPercentageModifier": 0.1,
+            "Type": "Absolute"
+          },
+          "DamageEffects": {
+            "WorldSoundEventId": "SFX_Club_Steel_Impact",
+            "LocalSoundEventId": "SFX_Club_Steel_Impact"
+          },
+          "Next": {
+            "Type": "ApplyEffect",
+            "Entity": "Target",
+            "EffectId": "Bleed"
+          }
+        }
+      ]
+    },
+    "Battleaxe_Swing_Left_Charged_Effect": {
+      "Interactions": [
+        {
+          "Parent": "Battleaxe_Swing_Left_Charged_Effect",
+          "Effects": {
+            "Trails": [
+              {
+                "TrailId": "Critical",
+                "PositionOffset": {
+                  "X": 1.5,
+                  "Y": 0,
+                  "Z": 0
+                },
+                "TargetNodeName": "Handle",
+                "RotationOffset": {
+                  "Yaw": 0,
+                  "Pitch": 0,
+                  "Roll": 75
+                }
+              },
+              {
+                "TrailId": "Daggers_Dash_Dark",
+                "PositionOffset": {
+                  "X": 1.7,
+                  "Y": 0,
+                  "Z": 0
+                },
+                "TargetNodeName": "Handle",
+                "RotationOffset": {
+                  "Yaw": 0,
+                  "Pitch": 0,
+                  "Roll": 75
+                }
+              },
+              {
+                "TrailId": "Daggers_Dash_Distortion",
+                "PositionOffset": {
+                  "X": 1.5,
+                  "Y": 0,
+                  "Z": 0
+                },
+                "TargetNodeName": "Handle",
+                "RotationOffset": {
+                  "Yaw": 0,
+                  "Pitch": 0,
+                  "Roll": 75
+                }
+              }
+            ]
+          }
+        }
+      ]
+    },
+    "Battleaxe_Swing_Left_Charged_Damage": {
+      "Interactions": [
+        {
+          "Parent": "Battleaxe_Swing_Left_Charged_Damage",
+          "DamageCalculator": {
+            "BaseDamage": {
+              "Physical": 42
+            },
+            "Type": "Absolute",
+            "RandomPercentageModifier": 0.2
+          },
+          "DamageEffects": {
+            "WorldSoundEventId": "SFX_Club_Steel_Impact",
+            "LocalSoundEventId": "SFX_Club_Steel_Impact"
+          },
+          "Next": {
+            "Type": "ApplyEffect",
+            "Entity": "Target",
+            "EffectId": "Bleed"
+          }
+        }
+      ]
+    },
+    "Spear_Stab_Effect": {
+      "Interactions": [
+        {
+          "Parent": "Spear_Stab_Effect",
+          "Effects": {
+            "WorldSoundEventId": "SFX_Axe_Special_Swing",
+            "Trails": [
+              {
+                "TrailId": "Critical",
+                "PositionOffset": {
+                  "X": 1.3,
+                  "Y": 0,
+                  "Z": 0
+                },
+                "TargetNodeName": "Handle",
+                "RotationOffset": {
+                  "Yaw": 0,
+                  "Pitch": 0,
+                  "Roll": 0
+                }
+              },
+              {
+                "TrailId": "Orb_Trail_White",
+                "PositionOffset": {
+                  "X": 1.9,
+                  "Y": 0.1,
+                  "Z": 0
+                },
+                "TargetNodeName": "Handle",
+                "RotationOffset": {
+                  "Yaw": 0,
+                  "Pitch": 0,
+                  "Roll": 0
+                }
+              },
+              {
+                "TrailId": "Orb_Trail_White",
+                "PositionOffset": {
+                  "X": 1.9,
+                  "Y": -0.1,
+                  "Z": 0
+                },
+                "TargetNodeName": "Handle",
+                "RotationOffset": {
+                  "Yaw": 0,
+                  "Pitch": 0,
+                  "Roll": 0
+                }
+              },
+              {
+                "TrailId": "Daggers_Dash",
+                "PositionOffset": {
+                  "X": 1.3,
+                  "Y": 0,
+                  "Z": 0
+                },
+                "TargetNodeName": "Handle",
+                "RotationOffset": {
+                  "Yaw": 0,
+                  "Pitch": 0,
+                  "Roll": 75
+                }
+              },
+              {
+                "TrailId": "Daggers_Dash_Distortion",
+                "PositionOffset": {
+                  "X": 1.3,
+                  "Y": 0,
+                  "Z": 0
+                },
+                "TargetNodeName": "Handle",
+                "RotationOffset": {
+                  "Yaw": 0,
+                  "Pitch": 0,
+                  "Roll": 75
+                }
+              }
+            ]
+          }
+        }
+      ]
+    },
+    "Spear_Stab_Damage": {
+      "Interactions": [
+        {
+          "Parent": "Spear_Stab_Damage",
+          "DamageCalculator": {
+            "BaseDamage": {
+              "Physical": 9
+            },
+            "Type": "Absolute",
+            "RandomPercentageModifier": 0.2
+          },
+          "DamageEffects": {
+            "WorldSoundEventId": "SFX_Club_Steel_Impact"
+          },
+          "Next": {
+            "Type": "ApplyEffect",
+            "Entity": "Target",
+            "EffectId": "Bleed"
+          }
+        }
+      ]
+    }
+  },
+  "Trails": [
+    {
+      "TrailId": "Medium_Default",
+      "PositionOffset": {
+        "X": 1.7,
+        "Y": 0,
+        "Z": 0
+      },
+      "TargetNodeName": "Handle",
+      "RotationOffset": {
+        "Yaw": 0,
+        "Pitch": 0,
+        "Roll": 75
+      }
+    }
+  ],
+  "Recipe": {
+    "Input": [
+      {
+        "ItemId": "Ingredient_Shark_Tooth",
+        "Quantity": 8
+      },
+      {
+        "ItemId": "Ingredient_Megalodon_Tooth",
+        "Quantity": 2
+      },
+      {
+        "ItemId": "Ingredient_Fabric_Scrap_Linen",
+        "Quantity": 4
+      },
+      {
+        "ResourceTypeId": "Wood_Trunk",
+        "Quantity": 4
+      },
+      {
+        "ItemId": "Ingredient_Stick",
+        "Quantity": 4
+      }
+    ],
+    "BenchRequirement": [
+      {
+        "Id": "Weapon_Bench",
+        "Categories": [
+          "Weapon_Battleaxe"
+        ]
+      }
+    ],
+    "TimeSeconds": 3.5
+  }
+}

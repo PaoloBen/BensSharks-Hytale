@@ -198,6 +198,14 @@
           {
             "Type": "Single",
             "Item": {
+              "ItemId": "Ingredient_Shark_Tooth",
+              "QuantityMin": 1,
+              "QuantityMax": 1
+            }
+          },
+          {
+            "Type": "Single",
+            "Item": {
               "ItemId": "Deco_Treasure",
               "QuantityMin": 1,
               "QuantityMax": 1
@@ -226,6 +234,14 @@
             "Type": "Single",
             "Item": {
               "ItemId": "Deco_Treasure_Pile_Small"
+            }
+          },
+          {
+            "Type": "Single",
+            "Item": {
+              "ItemId": "Ingredient_Megalodon_Tooth",
+              "QuantityMin": 1,
+              "QuantityMax": 1
             }
           }
         ]
@@ -286,6 +302,14 @@
             "Type": "Single",
             "Item": {
               "ItemId": "Fish_Shark_GreatWhite_Item",
+              "QuantityMin": 1,
+              "QuantityMax": 1
+            }
+          },
+          {
+            "Type": "Single",
+            "Item": {
+              "ItemId": "Fish_Shark_Tiger_Item",
               "QuantityMin": 1,
               "QuantityMax": 1
             }

@@ -1,6 +1,7 @@
 {
   "IncludeRoles": [
     "Shark_Hammerhead",
-    "Shark_GreatWhite"
+    "Shark_GreatWhite",
+    "Shark_Tiger"
   ]
 }

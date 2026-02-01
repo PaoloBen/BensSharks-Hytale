@@ -1,12 +1,12 @@
 {
   "Type": "Variant",
-  "Reference": "Template_Shark_Neutral",
+  "Reference": "Template_Shark_GreatWhite",
   "Modify": {
     "Appearance": "Shark_GreatWhite",
     "FlockArray": [
       "Shark_GreatWhite"
     ],
-    "DropList": "Drop_Shark_Hammerhead",
+    "DropList": "Drop_Shark_GreatWhite",
     "MaxHealth": 200,
     "IsMemory": true,
     "MemoriesCategory": "Abyssal",

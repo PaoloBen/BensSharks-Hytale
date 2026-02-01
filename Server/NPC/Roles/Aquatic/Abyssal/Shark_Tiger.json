@@ -1,0 +1,23 @@
+{
+  "Type": "Variant",
+  "Reference": "Template_Shark_Tiger",
+  "Modify": {
+    "Appearance": "Shark_Tiger",
+    "FlockArray": [
+      "Shark_Tiger"
+    ],
+    "DropList": "Drop_Shark_Tiger",
+    "MaxHealth": 170,
+    "IsMemory": true,
+    "MemoriesCategory": "Abyssal",
+    "NameTranslationKey": {
+      "Compute": "NameTranslationKey"
+    }
+  },
+  "Parameters": {
+    "NameTranslationKey": {
+      "Value": "server.npcRoles.Shark_Tiger.name",
+      "Description": "Translation key for NPC name display"
+    }
+  }
+}

@@ -10,6 +10,11 @@
       "Name": "Shark_GreatWhite",
       "Weight": 100,
       "SpawnAfterGameTime": "P1D"
+    },
+    {
+      "Name": "Shark_Tiger",
+      "Weight": 100,
+      "SpawnAfterGameTime": "P1D"
     }
   ],
   "ExclusionRadius": 0,
